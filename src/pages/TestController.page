@@ -1,0 +1,8 @@
+<apex:page standardController="Account" tabStyle="Account">
+       <apex:tabPanel >
+                   <apex:tab label="TestDetail">
+                   </apex:tab>
+                   <apex:relatedList list="Contacts"/>
+       </apex:tabPanel>
+    
+</apex:page>

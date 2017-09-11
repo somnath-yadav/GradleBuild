@@ -1,0 +1,12 @@
+<apex:page controller="TestController">
+    <apex:form >
+            <apex:pageBlock title="Welcome {!$User.FirstName}!">
+                <apex:pageBlockSection title="Update Contact">
+                    <apex:inputField id="Contact" value="{!contact.name}"/>
+                </apex:pageBlockSection>
+                <apex:pageBlockButtons location="bottom">
+                    <apex:commandButton action="{!save}" value="Save"/>
+                </apex:pageBlockButtons>
+            </apex:pageBlock>
+    </apex:form>
+</apex:page>

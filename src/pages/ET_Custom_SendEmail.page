@@ -1,0 +1,9 @@
+<apex:page >
+  <apex:tabPanel >
+      <apex:tab label="Send Email">
+          <apex:include pageName="ET_SendSingleEmailWithMailContent"/>
+      </apex:tab>
+      <apex:tab label="Dashboard">
+      </apex:tab>
+  </apex:tabPanel>
+</apex:page>

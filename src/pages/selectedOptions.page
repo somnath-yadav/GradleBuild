@@ -1,0 +1,17 @@
+<apex:page controller="sampleCon">
+        <apex:form >
+            <apex:selectCheckboxes value="{!countries}"> 
+                            <apex:selectOptions value="{!items}">
+                </apex:selectOptions>
+            </apex:selectCheckboxes> <br/>
+                    <apex:commandButton value="Test" action="{!test}" reRender="Out"/>
+        </apex:form>
+        
+        <apex:outputPanel id="Out">
+            <p> You have selected: </p>
+            <apex:dataList value="{!countries}" var="c">
+                {!c}
+            </apex:dataList>
+        </apex:outputPanel>
+
+</apex:page>

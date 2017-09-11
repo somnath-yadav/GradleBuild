@@ -1,0 +1,200 @@
+<apex:page controller="ET_CustomDashboard_Controller"  tabStyle="Position__c">
+   <apex:form id="adminDashboardForm">
+ <!--        <apex:actionFunction name="refreshDashboardComponents" action="{!initialize}" rerender="adminDashboardForm" /> -->
+        <script type="text/javascript">
+            var win;
+            function openReportProblemPopup(url,name){
+                win = window.open(url, name);
+                win.refreshDashboard = CallAlert;
+            }
+            
+            function afterChildClose(){
+                /*alert('Coming in: '+win);
+                alert(win.location);*/
+                // This is so that the function does not do anything when the window is first opened.
+                if(win.location != "about:blank"){
+                    refreshDashboardComponents();
+                }
+            }
+            
+            function CallAlert(){ 
+                refreshDashboardComponents(); 
+            }
+        </script>
+        
+<!--        <style>
+            .spinnerSmall{
+                width: 1.5em;
+                height: 1.5em;  
+                margin: .5em;
+            }
+        </style>
+-->
+        <apex:pageBlock title="My Dashboard" id="sdPb">
+<!--                        <apex:pageBlocksection title="Search" collapsible="false" columns="2">
+                <apex:pageBlockSectionItem >
+                    <apex:inputText value="{!searchKey}"/>
+                    <apex:actionStatus id="searchStatus">
+                        <apex:facet name="start">
+                            <img class="spinnerSmall" src="{!URLFOR( $Resource.ET4AE__ExactTargetImages, 'loading.gif' )}"/>
+                        </apex:facet>
+                        <apex:facet name="stop">
+                            <apex:commandButton action="{!searchSends}" value="Search" rerender="sdPb, pg" status="searchStatus"/>
+                        </apex:facet>
+                    </apex:actionStatus>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:actionStatus id="refreshStatus">
+                        <apex:facet name="start">
+                            <img class="spinnerSmall" src="{!URLFOR( $Resource.ET4AE__ExactTargetImages, 'loading.gif' )}"/>
+                        </apex:facet>
+                        <apex:facet name="stop">
+                            <apex:commandButton value="Refresh" action="{!initialize}" rerender="adminDashboardForm,pg" status="refreshStatus"/>
+                        </apex:facet>
+                    </apex:actionStatus>
+                </apex:pageBlockSectionItem>            
+            </apex:pageBlocksection>
+ -->
+                       <apex:pageBlockSection title="Sends" columns="1" collapsible="false" >
+                <apex:pageBlocktable value="{!LstSendDefRec}" var="sdRec" id="pbTab">
+                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:actionStatus id="colSendIdStatus">
+                                <apex:facet name="stop">
+                                    <apex:commandLink value="Send Id" action="{!updateSendOrder}" rerender="sdPb" status="colSendIdStatus" style="text-decoration:underline">
+                                        <apex:param name="sortField" value="Name" assignTo="{!sortField}"/>
+                                    </apex:commandLink>
+                                </apex:facet>
+                            </apex:actionStatus>                            
+                        </apex:facet>                           
+                     </apex:column>
+<!--                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:actionStatus id="colCreatedDateStatus">
+                                <apex:facet name="start">
+                                   <img class="spinnerSmall" src="{!URLFOR( $Resource.ET4AE__ExactTargetImages, 'loading.gif' )}"/>
+                                </apex:facet>
+                                <apex:facet name="stop">
+                                    <apex:commandLink value="Created" action="{!updateSendOrder}" rerender="sdPb" status="colCreatedDateStatus" style="text-decoration:underline">
+                                        <apex:param name="sortField" value="CreatedDate" assignTo="{!sortField}"/>
+                                    </apex:commandLink>
+                                </apex:facet>
+                            </apex:actionStatus>                            
+                        </apex:facet>                       
+                        <apex:outputField value="{!sdRec.CreatedDate}" style="font-family:calibri;font-size:12px;"/>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:actionStatus id="colOwnerStatus">
+                                <apex:facet name="start">
+                                   <img class="spinnerSmall" src="{!URLFOR( $Resource.ET4AE__ExactTargetImages, 'loading.gif' )}"/>
+                                </apex:facet>
+                                <apex:facet name="stop">
+                                    <apex:commandLink value="Requestor" action="{!updateSendOrder}" rerender="sdPb" status="colOwnerStatus" style="text-decoration:underline">
+                                        <apex:param name="sortField" value="owner.Name" assignTo="{!sortField}"/>
+                                    </apex:commandLink>
+                                </apex:facet>
+                            </apex:actionStatus>                            
+                        </apex:facet>                       
+                        <apex:outputText value="{!sdRec.owner.Name}" style="font-family:calibri;font-size:12px;"/>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:actionStatus id="colSendStatus">
+                                <apex:facet name="start">
+                                   <img class="spinnerSmall" src="{!URLFOR( $Resource.ET4AE__ExactTargetImages, 'loading.gif' )}"/>
+                                </apex:facet>
+                                <apex:facet name="stop">
+                                    <apex:commandLink value="Send Status" action="{!updateSendOrder}" rerender="sdPb" status="colSendStatus" style="text-decoration:underline">
+                                        <apex:param name="sortField" value="ET4AE__SendStatus__c" assignTo="{!sortField}"/>
+                                    </apex:commandLink>
+                                </apex:facet>
+                            </apex:actionStatus>                            
+                        </apex:facet>                       
+                        <apex:outputText value="{!sdRec.ET4AE__SendStatus__c}" style="font-family:calibri;font-size:12px;"/>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:actionStatus id="colEmailStatus">
+                                <apex:facet name="start">
+                                   <img class="spinnerSmall" src="{!URLFOR( $Resource.ET4AE__ExactTargetImages, 'loading.gif' )}"/>
+                                </apex:facet>
+                                <apex:facet name="stop">
+                                    <apex:commandLink value="Email" action="{!updateSendOrder}" rerender="sdPb" status="colEmailStatus" style="text-decoration:underline">
+                                        <apex:param name="sortField" value="ET4AE__EmailName__c" assignTo="{!sortField}"/>
+                                    </apex:commandLink>
+                                </apex:facet>
+                            </apex:actionStatus>                            
+                        </apex:facet>                       
+                        <apex:outputText value="{!sdRec.ET4AE__EmailName__c}" style="font-family:calibri;font-size:12px;"/>
+                    </apex:column>                  
+                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:actionStatus id="colSubscribersStatus">
+                                <apex:facet name="start">
+                                   <img class="spinnerSmall" src="{!URLFOR( $Resource.ET4AE__ExactTargetImages, 'loading.gif' )}"/>
+                                </apex:facet>
+                                <apex:facet name="stop">
+                                    <apex:commandLink value="Subscribers" action="{!updateSendOrder}" rerender="sdPb" status="colSubscribersStatus" style="text-decoration:underline">
+                                        <apex:param name="sortField" value="ET4AE__RecipientElement__c" assignTo="{!sortField}"/>
+                                    </apex:commandLink>
+                                </apex:facet>
+                            </apex:actionStatus>                            
+                        </apex:facet>                       
+                        <apex:outputText value="{!sdRec.ET4AE__RecipientElement__c}" style="font-family:calibri;font-size:12px;"/>
+                    </apex:column>                  
+                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:actionStatus id="colSubscriberTypeStatus">
+                                <apex:facet name="start">
+                                   <img class="spinnerSmall" src="{!URLFOR( $Resource.ET4AE__ExactTargetImages, 'loading.gif' )}"/>
+                                </apex:facet>
+                                <apex:facet name="stop">
+                                    <apex:commandLink value="Subscriber Type" action="{!updateSendOrder}" rerender="sdPb" status="colSubscriberTypeStatus" style="text-decoration:underline">
+                                        <apex:param name="sortField" value="ET4AE__RecipientType__c" assignTo="{!sortField}"/>
+                                    </apex:commandLink>
+                                </apex:facet>
+                            </apex:actionStatus>                            
+                        </apex:facet>                       
+                        <apex:outputText value="{!LOWER( SUBSTITUTE( sdRec.ET4AE__RecipientType__c, '_', ' ' ) )}" style="font-family:calibri;font-size:12px;"/>
+                    </apex:column>                  
+                    <apex:column >
+                        <apex:facet name="header">Tracking</apex:facet>
+                        <apex:outputText rendered="{!sdRec.ET4AE__SendStatus__c = 'Complete'}">
+                            <apex:commandButton onclick="window.open( '{!$Page.ET4AE__ViewEmailTracking}?sendId={!sdRec.Id}' );" value="View" rerender="null" style="font-family:calibri;font-size:12px;"/>
+                        </apex:outputText>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">Support</apex:facet>
+                        <apex:commandButton value="Report Problem" onclick="openReportProblemPopup('{!$Page.ET4AE__SupportRequest}?sendId={!sdRec.Id}','supportWindow');" rerender="null" style="font-family:calibri;font-size:12px;">
+                            <apex:param name="sendId2" value="{!sdRec.id}"/>
+                        </apex:commandButton>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                           <apex:actionStatus id="colSupportStatus">
+                                <apex:facet name="start">
+                                   <img class="spinnerSmall" src="{!URLFOR( $Resource.ET4AE__ExactTargetImages, 'loading.gif' )}"/>
+                                </apex:facet>
+                                <apex:facet name="stop">
+                                    <apex:commandLink value="Support Status" action="{!updateSendOrder}" rerender="sdPb" status="colSupportStatus" style="text-decoration:underline">
+                                        <apex:param name="sortField" value="ET4AE__SupportRequestStatus__c" assignTo="{!sortField}"/>
+                                    </apex:commandLink>
+                                </apex:facet>
+                            </apex:actionStatus>                            
+                        </apex:facet>                       
+                        <apex:outputText value="{!sdRec.ET4AE__SupportRequestStatus__c}" style="font-family:calibri;font-size:12px;"/>
+                   </apex:column>                  
+ -->                </apex:pageBlocktable>
+            </apex:pageBlocksection>
+        </apex:pageBlock>
+<!--        <apex:panelGrid columns="5" id="pg">
+            <apex:outputLabel value="{!firstRecordInList}-{!lastRecordInList} Of {!totalRecordsInList} Records" rendered="{!LstSendDefRec.size>0}"/>
+            <apex:commandLink action="{!first}" rendered="{!hasPrevious}">First</apex:commandlink>
+            <apex:commandLink action="{!previous}" rendered="{!hasPrevious}">Previous</apex:commandlink>
+            <apex:commandLink action="{!next}" rendered="{!hasNext}">Next</apex:commandlink>
+            <apex:commandLink action="{!last}" rendered="{!hasNext}">Last</apex:commandlink>
+        </apex:panelGrid>   
+-->
+    </apex:form>        
+</apex:page>

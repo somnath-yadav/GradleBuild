@@ -1,0 +1,35 @@
+<apex:page controller="ET_SingleSendContent_Controller" tabStyle="Contact">
+    <apex:form >
+    <apex:actionFunction action="{!setMailOption}" name="setMailOption" reRender="mainOP"/>>
+    <apex:outputPanel id="mainOP">
+                <apex:pageblock title="Send Email" >
+                    <apex:outputPanel id="pgBlkSec">
+                        <apex:pageblockSection columns="2">
+                            <apex:pageblockSectionItem >
+                                <apex:outputLabel value="Select Send Mail Option"/>
+                                <apex:selectRadio value="{!mailOption}" onClick="setMailOption()" layout="PageDirection">
+                                    <apex:selectOptions value="{!sendMailOption}"/>
+                                </apex:selectRadio>     
+                            </apex:pageblockSectionItem>  
+                          </apex:pageblockSection>     
+                                
+                                  
+                               <apex:pageBlockSection columns="2" rendered="{!isTemplate}">
+                                    <apex:pageblockSectionItem >
+                                        <apex:outputLabel value="Email Template"/>
+                                        <apex:commandLink action="{!FetchTemplates}" value="{!TemplateName}" reRender="pgBlkSec"/>
+                                    </apex:pageblockSectionItem>
+                                    <apex:pageblockSectionItem >
+                                        <apex:outputPanel rendered="{!showTemplateSelection}" id="op" layout="block">
+                                            <apex:outputLabel value="Folder"/> &nbsp;
+                                            <apex:selectList value="{!selectedFolder}" onchange="selectTemplate()">
+                                                <apex:selectOptions value="{!LstFolder}"/>
+                                            </apex:selectList>
+                                        </apex:outputPanel>
+                                    </apex:pageblockSectionItem>
+                               </apex:pageblockSection>
+                    </apex:outputPanel>
+                </apex:pageblock>
+     </apex:outputPanel>
+     </apex:form>
+</apex:page>

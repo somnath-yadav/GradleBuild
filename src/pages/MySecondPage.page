@@ -1,0 +1,4 @@
+<apex:page StandardController="Account" >
+Hello {!$User.FirstName}!
+<p> You are viwing '{!account.name}' account. </p>
+</apex:page>

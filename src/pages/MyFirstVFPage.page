@@ -1,0 +1,9 @@
+<apex:page controller="MyVFController">
+    <apex:form >
+      <apex:pageblock title="Hi {!$User.FirstName}!!">
+              This is a new page for VF testing.
+              <apex:inputField value="{!account.name}"/>
+             <apex:commandButton value="Save Account for test" action="!Save11"/>
+      </apex:pageblock>
+  </apex:form>
+</apex:page>

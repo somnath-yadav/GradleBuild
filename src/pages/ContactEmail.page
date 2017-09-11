@@ -1,0 +1,29 @@
+<apex:page standardController="Contact" extensions="ET_ContactEmail_Controller" tabStyle="Contact">
+    <apex:form id="formId" style="width:80%">
+        <apex:outputPanel id="op">
+        <apex:pageBlock id="pb1" rendered="{!isAllOk}" title="">
+            <apex:pageBlockSection id="ContactPbs" collapsible="false" columns="1" title="Contact Email Selection"> 
+                <apex:pageBlockSectionItem dataStyle="font-family:calibri;font-size:11px;">
+                    <apex:outputLabel ></apex:outputLabel>      
+                    <apex:selectRadio value="{!selectedEmail}" layout="pageDirection" id="srId">
+                        <apex:selectOptions value="{!EmailFields}"/>
+                    </apex:selectRadio>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>                    
+            <center><apex:commandButton value="Proceed" action="{!proceed}" style="width:55px;"/></center>
+        </apex:pageBlock>
+        <apex:pageBlock rendered="{!NOT(isAllOk)}">
+          <apex:pageBlockSection collapsible="false" columns="1"> 
+                <apex:pageBlockSectionItem dataStyle="font-family:calibri;font-size:11px;">
+                    <apex:pageMessages escape="false"/>
+                </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                <apex:commandLink value="Go Back" action="{!goBack}" style="width:55px;" rendered="{!(NOT(isAllOk) && LstNoEmailContact.size==0)}" /> &nbsp; 
+            <center>
+                <apex:commandButton value="Ok" action="{!okToProceed}" style="width:55px;" reRender="op" rendered="{!LstNoEmailContact.size>0}"/> &nbsp; 
+                <apex:commandButton value="Cancel" action="{!Cancel}" style="width:55px;" reRender="op" rendered="{!LstNoEmailContact.size>0}"/>
+            </center>
+        </apex:pageBlock>        
+        </apex:outputPanel>    
+    </apex:form>
+</apex:page>

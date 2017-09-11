@@ -1,0 +1,14 @@
+<apex:page controller="demoDynamicApex">	
+    <apex:sectionHeader title="Metaphone" subtitle="Dynamic Apex"/>
+    <apex:form id="TheForm">
+        <Apex:pageBlock >
+        	<Apex:pageBlockButtons location="top">
+                <b> Object: </b>
+                <apex:selectList value="{!SelectedObject}" size="1"> 
+                    <apex:selectOptions value="{!ListObjects}"/>  
+                    <apex:actionSupport event="Onchange" rerender="TheForm"/>
+                </apex:selectList>
+            </Apex:pageBlockButtons>
+        </Apex:pageBlock>
+    </apex:form>
+</apex:page>

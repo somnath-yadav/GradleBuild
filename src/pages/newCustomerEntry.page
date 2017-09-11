@@ -1,0 +1,20 @@
+<apex:page controller="Customer">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageblockButtons >
+                <apex:commandButton title="Save" action="{!save}" value="Save" />
+            </apex:pageblockButtons>
+                
+        <apex:pageBlock title="New Customer Entry">
+            <p>CompName: 
+            <apex:inputText value="{!CompName}"/></p>
+        </apex:pageBlock>
+        </apex:pageBlock>
+
+          <apex:pageBlock title="Accounts">
+        <apex:pageBlockTable value="{!accountList}" var="acct">
+            <apex:column value="{!acct.Name}"/>
+        </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

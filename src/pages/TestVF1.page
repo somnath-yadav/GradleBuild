@@ -1,0 +1,12 @@
+<apex:page controller="TestController1" >
+    <apex:form >
+        <apex:pageblock >
+            <apex:pageblocksection title="Account Update">
+                <apex:inputField label="Account" value="{!Account.name}" />
+            </apex:pageblocksection>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!Save}"/>
+            </apex:pageBlockButtons>
+        </apex:pageblock> 
+    </apex:form>  
+</apex:page>

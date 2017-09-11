@@ -1,0 +1,205 @@
+<apex:page docType="html-5.0" standardStylesheets="false" showheader="false">   
+    
+<html>
+<head>
+	<title>Our Group</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=2"/>
+
+	
+    <apex:stylesheet value="{!URLFOR($Resource.Bootstrap, '/css/bootstrap.min.css')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Bootstrap, '/js/bootstrap.min.js')}"/>
+    
+    <!--
+	<apex:includeScript value="{!URLFOR($Resource.Bootstrap, '/js/bootstrap.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.bootstrap, 'jquery/1.12.0/jquery.min.js')}"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css"/>
+    <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css"/>
+    -->
+
+<style>
+
+	.bg-orange {
+      		background-color: #f4511e;
+		color: #fff;
+  	}
+		
+	.container-fluid {
+    		padding: 0px 0px;
+	}
+
+	  .bg-grey {
+      		background-color: #f6f6f6;
+  	}
+
+	.logo-small {
+    		color: #f4511e;
+    		font-size: 25px;
+	}
+
+
+	<!--body {
+    		font: 400 15px Lato, sans-serif;
+    		line-height: 1.8;
+    		color: #818181;
+	}-->
+
+
+	.jumbotron {
+    		font-family: Montserrat, sans-serif;
+		
+	}
+
+	h1 {
+      		font-size: 48px;
+      		text-transform: uppercase;
+      		color: #fff;
+      		font-weight: 600;
+      		margin-bottom: 30px;
+  	}
+
+
+  	h2 {
+      		font-size: 24px;
+      		text-transform: uppercase;
+      		color: #303030;
+      		font-weight: 600;
+      		margin-bottom: 30px;
+  	}
+
+
+	h4 {
+      		font-size: 16px;
+      		text-transform: uppercase;
+      		color: #303030;
+      		font-weight: 600;
+      		margin-bottom: 10px;
+  	}
+
+
+	</style>
+</head>
+
+
+<body>
+<!-- Our Group Container -->
+<div class="container-fluid text-center bg-orange">
+	<h1>Our Group</h1>
+    <p>A group of professionals mostly from Bhilai area, who are willing to guide and support friends looking to pursue undergraduate(UG), postgraduate(PG) and Career 
+
+in different fields.<br/>
+	Group provides all voluntary support for no financial gain. 
+	</p> 
+</div>
+
+
+
+<!-- How it works Container -->
+<div class="container-fluid text-center">
+	<h2>HOW IT WORKS</h2>
+    <p>You can reach out to us via. email, whatsapp or facebook.<br/> We will contact you via phone, email, whatsapp or facebook whichever is feasible to guide you. 
+
+<br/> Please see below guides in different areas, which we hope will increase over time.
+    	</p>	
+</div>
+
+
+
+<!-- After 12 Container -->
+<div class="container-fluid text-center bg-grey">
+	<h2>AFTER 12</h2>
+
+	<div class="row">
+
+		<div class="col-sm-3">
+			<span class="glyphicon glyphicon-education logo-small"></span>
+			<h4>BE/B.TECH</h4>
+        <p><b>Guide</b>: Santosh (BE, SSTC)<br/> Somnath (B.Tech, NITW)</p>
+		</div>
+		<div class="col-sm-3">
+			<span class="glyphicon glyphicon-education  logo-small"></span>
+			<h4>LLB</h4>
+			<p><b>Guide</b>: Babita (Lawyer, Ex. District Collectorate)</p>
+		</div>
+		<div class="col-sm-3">
+			<span class="glyphicon glyphicon-education  logo-small"></span>
+			<h4>MBBS</h4>
+			<p><b>Guide</b>: Pankaj (MBBS, BLDE University)</p>
+		</div>
+		<div class="col-sm-3">
+			<span class="glyphicon glyphicon-briefcase  logo-small"></span>
+			<h4>RRB</h4>
+			<p><b>Guide</b>: Rama (Loco Pilot)<br/> Anshuman(Asst Loco Pilot)</p>
+		</div>
+	</div>
+</div>
+
+
+<!-- After UG Container -->
+
+<div class="container-fluid text-center">
+	<h2>AFTER UG</h2>
+
+	<div class="row">
+		
+
+		<div class="col-sm-3">
+			<span class="glyphicon glyphicon-briefcase  logo-small"></span>
+			<h4>CG PSC</h4>
+			<p><b>Guide</b>: Girijashankar(Lecturer)<br/> Ramesh(DRM Office) (Cleared CGPSC Mains)</p>
+		</div>
+		<div class="col-sm-3">
+			<span class="glyphicon glyphicon-education  logo-small"></span>
+			<h4>MBA</h4>
+			<p><b>Guide</b>: Sumit (EPDM, IIMC)</p>
+		</div>
+		
+		<div class="col-sm-3">
+			<span class="glyphicon glyphicon-education  logo-small"></span>
+			<h4>MCA</h4>
+			<p><b>Guide</b>: Govind (MCA)</p>
+		</div>
+		<div class="col-sm-3">
+			<span class="glyphicon glyphicon-education  logo-small"></span>
+			<h4>ME/M.TECH</h4>
+			<p><b>Guide</b>: Abhishek (M.Tech, IIITM)<br/> Kavi (PGDIT, IITK)</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-3">
+			<span class="glyphicon glyphicon-briefcase  logo-small"></span>
+			<h4>PSU</h4>
+			<p><b>Guide</b>: Shailesh(DM, SPMCL)<br/> Tarun(EE, NPCI)</p>
+		</div>
+		<div class="col-sm-3">
+			<span class="glyphicon glyphicon-briefcase  logo-small"></span>
+			<h4>Teaching</h4>
+			<p><b>Guide</b>: Neeraj (Principal)</p>
+		</div>
+	</div>
+</div>
+
+<!-- Contact Container -->
+<div class="container-fluid text-center bg-grey">
+	<div class="row">
+
+			<h2 class="text-center">CONTACT</h2>
+					
+			<p>Contact us and we'll get back to you as soon as possible.</p>
+			
+			<div class="col-sm-4">
+			<p><b><span class="glyphicon glyphicon-envelope"></span> ourgroup@gmail.com</b> </p>
+			</div>
+			<div class="col-sm-4">
+                	<p><b><span class="glyphicon glyphicon-envelope"></span> facebook.com/ourgroup</b></p> 
+			</div>
+			<div class="col-sm-4">
+			<p><b><span class="glyphicon glyphicon-envelope"></span> whatsapp/ourgroup</b></p>
+			</div>
+		
+	</div>
+</div>
+</body>
+</html>
+</apex:page>

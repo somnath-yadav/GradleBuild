@@ -1,0 +1,72 @@
+<!--
+<apex:page StandardController="Employment_Website__c"> 
+<apex:form >
+         <apex:pageBlock >
+            <apex:pageBlockButtons >
+                 <apex:commandButton value="Save Record" action="{!save}"/>
+             </apex:pageBlockButtons>
+              <apex:pageBlockSection >
+            <apex:inputField value="{!Employment_Website__c.Web_Address__c}"/>
+            </apex:pageBlockSection>
+         </apex:pageBlock>
+</apex:form>
+</apex:page>
+-->
+
+<apex:page standardController="Employment_Website__c" showHeader="true"> 
+<apex:form >
+    <apex:tabPanel switchType="client" selectedTab="name1" id="theTabPanel">
+        <apex:tab label="One" name="name1" id="tabOne"> 
+            <apex:toolbar >
+                 <apex:toolbarGroup >
+                    <apex:outputLink value="http://www.salesforce.com">
+                      Salesforce
+                    </apex:outputLink>
+                    <apex:outputLink value="http://developer.salesforce.com">
+                     Apex Developer Network
+                    </apex:outputLink>
+                </apex:toolbarGroup>
+                <apex:toolbarGroup itemSeparator="line" location="right">
+                                <apex:inputText id="theInputText">Enter Text</apex:inputText>  
+                                <apex:commandLink value="search"/>
+               </apex:toolbarGroup>
+            </apex:toolbar>
+        <apex:pageBlock >
+             <apex:pageBlockButtons >
+                 <apex:actionRegion >
+                    <apex:commandButton value="Save Record" action="{!Save}"/>
+                 </apex:actionRegion>
+             </apex:pageBlockButtons>
+              <apex:pageBlockSection >
+            <apex:inputField value="{!Employment_Website__c.Web_Address__c}"/>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel Value="This is a custom label"/>
+                    <apex:inputField value="{!Employment_Website__c.Web_Address__c}"/> 
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Password"/>
+                    <apex:inputSecret />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Rich Text Box"/>
+                    <apex:inputTextarea />
+                </apex:pageBlockSectionItem>
+
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        </apex:tab>
+        <apex:tab label="Two" name="name2" id="tabTwo">content of this tab</apex:tab>
+    </apex:tabPanel>
+</apex:form>                      
+     <apex:dataTable value="{!Employment_Website__c}"  var="website" cellspacing="10" bgcolor="green" border="box" title="Test Table">
+     <apex:column >
+                        <apex:facet name="header">Website Name</apex:facet>                        
+                        <apex:outputText value="{!Employment_Website__c.Web_Address__c}"/>
+                </apex:column>                  
+                <apex:column >
+                        <apex:facet name="header">Maximum Budget</apex:facet>
+                        <apex:outputText value="{!Employment_Website__c.Maximum_Budget__c}"/>
+                </apex:column>               
+                 
+     </apex:dataTable>
+</apex:page>

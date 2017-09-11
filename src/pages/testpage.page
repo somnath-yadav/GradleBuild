@@ -1,0 +1,7 @@
+<apex:page controller="StatePicker">
+    <apex:form >
+        <apex:selectList id="Country" value="{!country}">
+            <apex:selectOptions value="{!CountrySelecetedList}"/>
+        </apex:selectList>
+    </apex:form>
+</apex:page>
